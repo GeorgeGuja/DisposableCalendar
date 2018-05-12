@@ -1,3 +1,5 @@
+# DisposableCalendar
+
 
 ## Packages used
 
@@ -42,12 +44,6 @@ import
     server/
   ui/
     components/
-      documents/
-        edit/
-        index/
-          documents-index-item/
-        new/
-        show/
     helpers/
     layouts/
     pages/
