@@ -4,30 +4,30 @@ import { notify } from "/imports/modules/notifier"
 
 
 Template.addEditEventModal.helpers({
-  modalType( type ) {
-    let eventModal = Session.get( 'eventModal' );
-    if ( eventModal ) {
+  modalType(type) {
+    let eventModal = Session.get('eventModal');
+    if (eventModal) {
       return eventModal.type === type;
     }
   },
   modalLabel() {
-    let eventModal = Session.get( 'eventModal' );
+    let eventModal = Session.get('eventModal');
 
-    if ( eventModal ) {
+    if (eventModal) {
       return {
         button: eventModal.type === 'edit' ? 'Edit' : 'Add',
         label: eventModal.type === 'edit' ? 'Edit' : 'Add an'
       };
     }
   },
-  selectedValue( eventType, selectOption ) {
+  selectedValue(eventType, selectOption) {
     return eventType === selectOption;
   },
   event() {
-    let eventModal = Session.get( 'eventModal' );
+    let eventModal = Session.get('eventModal');
 
-    if ( eventModal ) {
-      return eventModal.type === 'edit' ? Events.findOne( eventModal.event ) : {
+    if (eventModal) {
+      return eventModal.type === 'edit' ? Events.findOne(eventModal.event) : {
         start: eventModal.date,
         end: eventModal.date
       };
@@ -46,6 +46,9 @@ Template.addEditEventModal.events({
 
     let eventModal = Session.get('eventModal'),
       submitType = eventModal.type === 'edit' ? 'editEvent' : 'addEvent',
+      eventItem = {};
+
+    if (submitType === 'addEvent') {
       eventItem = {
         title: template.find('[name="title"]').value,
         start: template.find('[name="start"]').value,
@@ -54,8 +57,15 @@ Template.addEditEventModal.events({
         guests: parseInt(template.find('[name="guests"]').value, 10),
         calendarId: FlowRouter.getParam("id")
       };
+    }
+
 
     if (submitType === 'editEvent') {
+      eventItem = {
+        title: template.find('[name="title"]').value,
+        type: template.find('[name="type"] option:selected').value,
+        guests: parseInt(template.find('[name="guests"]').value, 10),
+      };
       eventItem._id = eventModal.event;
     }
 
@@ -69,20 +79,20 @@ Template.addEditEventModal.events({
       }
     });
   },
-  "click .delete-event"(event, instance) {
+  "click .delete-event" (event, instance) {
     event.preventDefault()
 
     if (confirm("Are you sure?")) {
       let eventId = Template.instance().getEventid()
 
-      Meteor.call('events.delete',
-        {
+      Meteor.call('events.delete', {
           eventId: eventId
         },
         (error, result) => {
           if (error) {
             console.log(error.error)
-          } else {
+          }
+          else {
             notify("Event deleted!", "error")
           }
         }

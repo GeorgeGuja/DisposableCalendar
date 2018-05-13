@@ -6,9 +6,10 @@ import { Session } from 'meteor/session'
 import moment from 'moment'
 import "../../components/events/modals/addEditEventModal.html"
 import "../../components/events/modals/addEditEventModal.js"
+
 Template.calendar.onRendered(function() {
     let template = Template.instance();
-    template.subscribe('events');
+    template.subscribe('events.all');
     let isPast = (date) => {
         let today = moment().format();
         return moment(today).isAfter(date)

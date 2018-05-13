@@ -15,14 +15,14 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item {{isActiveRoute 'events'}}">
-            <a class="nav-link" href="{{pathFor 'events'}}">Events</a>
+          <li class="nav-item {{isActiveRoute 'eventsList'}}">
+            <a class="nav-link" href="{{pathFor 'eventsList'}}">Events</a>
           </li>
         </ul>
 
         <ul class="navbar-nav">
           <li class="nav-item {{isActiveRoute 'calendar'}}">
-            <a class="nav-link" href="{{pathFor 'calendar/:id' id=randomId}}">Calendar</a>
+            <a class="nav-link" href="{{pathFor '/calendar/:id' id=randomId}}">Calendar</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://github.com/GeorgeGuja/DisposableCalendar" target="_blank">Github</a>

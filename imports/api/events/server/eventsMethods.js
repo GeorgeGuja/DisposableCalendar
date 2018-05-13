@@ -26,11 +26,8 @@ Meteor.methods({
     check( event, {
       _id:String,
       title: String,
-      start: String,
-      end: String,
       type: String,
       guests: Number,
-      calendarId: String
     });
 
     try {

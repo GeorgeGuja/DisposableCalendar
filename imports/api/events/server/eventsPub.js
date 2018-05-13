@@ -3,10 +3,6 @@ import SimpleSchema from "simpl-schema"
 
 import { Events } from "../both/eventsCollection.js"
 
-Meteor.publish('events', function() { 
-    return Events.find(); 
-} );
-
 
 // ***************************************************************
 // PUBLICATIONS (For the events collection)
@@ -15,7 +11,18 @@ Meteor.publish('events', function() {
 // Events List
 // -------------------------------------------------------
 Meteor.publish("events.all", function eventsAll() {
-  return Events.find()
+  return Events.find({}, {
+    fields: {
+      title: 1,
+      type: 1,
+      start: 1,
+      end: 1,
+      guests: 1,
+      // calendarId: 1,
+      createdAt: 1,
+      updatedAt :1
+    }
+  });
 })
 
 // Event Edit
@@ -25,5 +32,15 @@ Meteor.publish("events.single", function eventSingle(id) {
     id: { type: String }
   }).validate({ id })
 
-  return Events.find(id)
+  return Events.find({ _id: id }, {
+    fields: {
+      title: 1,
+      type: 1,
+      start: 1,
+      end: 1,
+      guests: 1,
+      // calendarId: 1,
+      createdAt: 1
+    }
+  })
 })
