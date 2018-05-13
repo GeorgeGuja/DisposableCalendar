@@ -1,0 +1,15 @@
+<template name="eventItem">
+
+  <tr class="event-item">
+    <td>{{event.title}}</td>
+    <td>{{event.type}}</td>
+    <td>{{event.guests}}</td>
+    <td>{{showTimeAgo event.updatedAt}}</td>
+    <td>{{showPrettyTimestamp event.createdAt}}</td>
+    <td class="text-right">
+      <a class="btn btn-sm btn-secondary" href="{{pathFor 'eventEdit' eventId=event._id}}" role="button">Edit</a>
+      <a class="btn btn-sm btn-danger js-delete-event" href="#" role="button">Delete</a>
+    </td>
+  </tr>
+
+</template>

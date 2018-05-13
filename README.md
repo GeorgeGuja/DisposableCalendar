@@ -23,8 +23,13 @@
 - bootstrap
 - moment
 - noty
+- fullcalendar
 
-The Meteor packages 'autopublish' and 'insecure' are removed by default.
+### BoilerPlate
+BoilerPlate included routing, structure, and permissions. 
+https://github.com/kjetilhau/meteor-skeleton
+
+
 
 ## Structure
 
@@ -32,7 +37,7 @@ The Meteor packages 'autopublish' and 'insecure' are removed by default.
 client
 import
   api/
-    documents/
+    events/
       both/
         schemas/
       server/
@@ -55,3 +60,17 @@ public
   fonts/
 server
 ```
+
+### Notes
+
+Why is it important to use Tracker.autoRun?
+
+  this.autorun(function () {
+      Bookings.find().fetch();
+      var fc = self.$('.fc');
+      fc.fullCalendar('refetchEvents');
+  });
+  
+  You must have a reactive data source inside your autorun to ensure that it executes when data changes. 
+  In this case we don't actually need to get the data within the autorun since you are using the FullCalendar events callback. 
+  So Bookings.find().fetch() just ensures each time the collection changes refetchEvents is run.

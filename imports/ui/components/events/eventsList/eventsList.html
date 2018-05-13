@@ -1,0 +1,40 @@
+<template name="eventsList">
+
+  <div class="event-list-container">
+    <div class="card">
+      <div class="card-body">
+        <h1>Events</h1>
+
+
+        {{#if Template.subscriptionsReady}}
+          {{#if events.count}}
+            <table class="table table-hover mt-3">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Type</th>
+                  <th>Guests</th>
+                  <th>Updated</th>
+                  <th>Created</th>
+                  <th class="text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each event in events}}
+                  {{> eventItem event=event}}
+                {{/each}}
+              </tbody>
+            </table>
+          {{else}}
+            <div class="mt-3">
+              {{> emptyResult text="No events added yet" description="Click the button to add some..." icon=""}}
+            </div>
+          {{/if}}
+        {{else}}
+          {{> loader}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+</template>

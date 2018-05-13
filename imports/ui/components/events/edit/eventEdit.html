@@ -1,0 +1,24 @@
+<template name="eventEdit">
+
+  <div class="event-edit">
+    <div class="card">
+      <div class="card-body">
+        {{#if Template.subscriptionsReady}}
+          <h2>Edit event</h2>
+
+          {{#autoForm schema=eventFormSchema doc=event id="eventEditForm" type="method" meteormethod="editEvent" }}
+            {{> afQuickField name='_id' type='hidden'}}
+            <fieldset>
+              {{> afQuickField name='title'}} {{> afQuickField name='type' options="allowed"}} {{> afQuickField name='guests' }}
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a class="btn btn-link" role="button" href="{{pathFor 'eventsList'}}">Back</a>
+          {{/autoForm}}
+        {{else}}
+          {{> loader}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+</template>
