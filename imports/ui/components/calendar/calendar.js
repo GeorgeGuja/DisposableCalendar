@@ -44,8 +44,8 @@ Template.calendar.onRendered(function() {
             if (data) {
                 callback(data);
             }
-
-        }
+        },
+        eventTextColor: 'white'
     }).data().fullCalendar;
     Tracker.autorun(() => {
         Events.find().fetch();
