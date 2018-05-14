@@ -1,8 +1,6 @@
 # DisposableCalendar
 The purpose of DisposableCalendar is to serve as a throwaway calendar for you and your coworkers. No authorization steps, no sign ups or logins. Simply generate yourself a unique calendar and share the link with your guests. Anyone can add or edit events if they have your calendar link. Easy to share, easy to onboard. 
 
-The purpose of DisposableCalendar is to serve as a throwaway calendar for you and your coworkers. No authorization steps, no sign ups or logins. Simply generate yourself a unique calendar and share the link with your guests. Anyone can add or edit events if they have your calendar link. Easy to share, easy to onboard. 
-
 ## Packages used
 
 ### Atmosphere
@@ -62,8 +60,3 @@ public
   fonts/
 server
 ```
-
-<<<<<<< HEAD
-=======
-### Notes
->>>>>>> 3db5c1f9171744a135ba3086fb03a34ec14214c6
