@@ -1,6 +1,12 @@
 # DisposableCalendar
 The purpose of DisposableCalendar is to serve as a throwaway calendar for you and your coworkers. No authorization steps, no sign ups or logins. Simply generate yourself a unique calendar and share the link with your guests. Anyone can add or edit events if they have your calendar link. Easy to share, easy to onboard. 
 
+## Features
+- Calendar: Javascript fullCalendar library used with Meteor.
+- Ability to have a unique route to a calendar.
+- Ability to view, create, edit, and delete events within calendar.
+- Events List: Ability to view, edit, delete events across the site outside of the calendar.
+
 ## How To run
 ```
 git clone https://github.com/GeorgeGuja/DisposableCalendar.git
@@ -8,6 +14,11 @@ cd DisposableCalendar
 meteor npm install
 meteor
 ```
+
+## Current State
+- Not production ready. Hosted on a ubuntu EC2 T2.MICRO manually. Need to implement CI workflow.
+- **For demo purposes everyone can see all events** this is easy to resolve via publication change however.
+
 ## Packages used
 
 ## Atmosphere
@@ -41,11 +52,7 @@ We list the fields in the publication that we want to publish because in the fut
 ## Autorun
 Why is it important to use Tracker.autoRun? this.autorun(function () { Events.find().fetch(); var fc = self.$('.fc'); fc.fullCalendar('refetchEvents'); }); Since the calendar is located in the onCreated function for the template the data/events will not be available on first draw. Having Meteors autorun function within the onCreated will assist in redrawing the calendar with the events that are incoming from the publication. You must have a reactive data source inside the autorun function for this to work correctly. Anytime where is a change in the collection of events the calendar will run its refetchEvents function. 
 
-## Features
-- Calendar: Javascript fullCalendar library used with Meteor.
-- Ability to have a unique route to a calendar.
-- Ability to view, create, edit, and delete events within calendar.
-- Events List: Ability to view, edit, delete events across the site outside of the calendar.
+
 
 ## Core Meteor Competencies in project:
 - Application Structure
