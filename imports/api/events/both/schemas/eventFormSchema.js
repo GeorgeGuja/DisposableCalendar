@@ -22,18 +22,6 @@ const eventFormSchema = new SimpleSchema({
     type: Number,
     label: 'The number of guests expected at this event.'
   },
-  // 'start': {
-  //   type: String,
-  //   label: 'When this event will start.',
-  // },
-  // 'end': {
-  //   type: String,
-  //   label: 'When this event will end.'
-  // },
-  // 'calendarId': {
-  //   type: String,
-  //   label: 'The ID of the current calendar associated with the event.',
-  // },
 })
 
 export default eventFormSchema
