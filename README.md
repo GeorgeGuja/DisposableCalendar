@@ -50,7 +50,14 @@ Methods are located on the server and use the check package to ensure arguments 
 We list the fields in the publication that we want to publish because in the future we may add additional fields to the document and wouldn't want those fields explicitly published. I've commented out the publication field for calendarID for demo purposes. Right now the calendar is wired to show all events in the database for DEMO purposes. 
 
 ## Autorun
-Why is it important to use Tracker.autoRun? this.autorun(function () { Events.find().fetch(); var fc = self.$('.fc'); fc.fullCalendar('refetchEvents'); }); Since the calendar is located in the onCreated function for the template the data/events will not be available on first draw. Having Meteors autorun function within the onCreated will assist in redrawing the calendar with the events that are incoming from the publication. You must have a reactive data source inside the autorun function for this to work correctly. Anytime where is a change in the collection of events the calendar will run its refetchEvents function. 
+Why is it important to use Tracker.autoRun? 
+```
+Tracker.autorun(() => {
+  Events.find().fetch();
+  $('#calendar-component').fullCalendar('refetchEvents');
+});
+```
+Since the calendar is located in the onCreated function for the template the data/events will not be available on first draw. Having Meteors autorun function within the onCreated will assist in redrawing the calendar with the events that are incoming from the publication. You must have a reactive data source inside the autorun function for this to work correctly. Anytime where is a change in the collection of events the calendar will run its refetchEvents function. 
 
 
 
