@@ -14,6 +14,8 @@ cd DisposableCalendar
 meteor npm install
 meteor
 ```
+## Demo
+http://ec2-54-164-101-100.compute-1.amazonaws.com:3000/
 
 ## Current State
 - Not production ready. Hosted on a ubuntu EC2 T2.MICRO manually. Need to implement CI workflow.
