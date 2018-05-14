@@ -52,7 +52,7 @@ Meteor.methods({
   }
 });
 
-
+//Demonstrating a different way of calling a method and using the ValidatedMethod package
 export const deleteEvent = new ValidatedMethod({
   name: "events.delete",
   validate: new SimpleSchema({
