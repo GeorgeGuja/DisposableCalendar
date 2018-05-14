@@ -84,7 +84,7 @@ Template.addEditEventModal.events({
     event.preventDefault()
 
     if (confirm("Are you sure?")) {
-      let eventId = Template.instance().getEventid()
+      let eventId = event.currentTarget.id
 
       Meteor.call('events.delete', {
           eventId: eventId
@@ -95,6 +95,8 @@ Template.addEditEventModal.events({
           }
           else {
             notify("Event deleted!", "error")
+            $('#add-edit-event-modal').modal('hide');
+            $('.modal-backdrop').fadeOut();
           }
         }
       )
