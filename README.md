@@ -1,5 +1,6 @@
 # DisposableCalendar
 
+The purpose of DisposableCalendar is to serve as a throwaway calendar for you and your coworkers. No authorization steps, no sign ups or logins. Simply generate yourself a unique calendar and share the link with your guests. Anyone can add or edit events if they have your calendar link. Easy to share, easy to onboard. 
 
 ## Packages used
 
@@ -61,16 +62,3 @@ public
 server
 ```
 
-### Notes
-
-Why is it important to use Tracker.autoRun?
-
-  this.autorun(function () {
-      Bookings.find().fetch();
-      var fc = self.$('.fc');
-      fc.fullCalendar('refetchEvents');
-  });
-  
-  You must have a reactive data source inside your autorun to ensure that it executes when data changes. 
-  In this case we don't actually need to get the data within the autorun since you are using the FullCalendar events callback. 
-  So Bookings.find().fetch() just ensures each time the collection changes refetchEvents is run.

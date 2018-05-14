@@ -3,13 +3,34 @@
   <div class="frontpage">
     <div class="jumbotron">
       <h1 class="display-4">DisposableCalendar</h1>
-      <p>The purpose of DisposableCalendar is to serve as a throwaway calendar for you and your coworkers. No authorization steps, no sign ups or logins. 
-      Simply generate yourself a unique calendar and share the link with your guests. 
-      Anyone can add or edit events if they have your calendar link. Easy to share, easy to onboard. 
+      <p>The purpose of DisposableCalendar is to serve as a throwaway calendar for you and your coworkers. No authorization steps, no sign ups or logins. Simply generate yourself a unique calendar and share the link with your guests. Anyone can add or edit events if they have your calendar link. Easy to share, easy to onboard. 
       <br><br>
-      Security: Though there are CRUD rules in place.
+      
+      <h5>Security:</h5> Methods are located on the server and use the check package to ensure arguments past are correct. Allow/Deny rules are in place aswell.
       <br><br>
-      Publications: We list the fields in the publication that we want to publish because in the future we may add additional fields to the document and wouldn't want those explicitly published. TODO</p>
+      <h5>Publications:</h5> We list the fields in the publication that we want to publish because in the future we may add additional fields to the document and wouldn't want those fields explicitly published. I've commented out the publication field for calendarID for demo purposes. Right now the calendar is wired to show all events in the database for DEMO purposes.
+      <br><br>
+      <h5>Autorun:</h5>
+      Why is it important to use Tracker.autoRun? this.autorun(function () { Events.find().fetch(); var fc = self.$('.fc'); fc.fullCalendar('refetchEvents'); });
+      Since the calendar is located in the onCreated function for the template the data/events will not be available on first draw. Having Meteors autorun function within the onCreated will assist in redrawing the calendar with the events that are incoming from the publication. You must have a reactive data source inside the autorun function for this to work correctly. Anytime where is a change in the collection of events the calendar will run its refetchEvents function.
+      <br><br>
+      <h5>Features:</h5>
+      <li>Calendar: Javascript fullCalendar library used with Meteor. </li>
+      <li>Ability to have a unique route to a calendar.</li>
+      <li>Ability to view, create, edit, and delete events within calendar.</li>
+      <li>Events List: Ability to view, edit, delete events across the site outside of the calendar. </li>
+      <br>
+      <h5>Core Meteor Competencies in project:</h5>
+      <li>Application Structure</li>
+      <li>Routing</li>
+      <li>Templating</li>
+      <li>Schemas</li>
+      <li>Security Rules</li>
+      <li>Publications</li>
+      <li>Methods</li>
+      <li>Importing 3rd party NPM packages </li>
+      <li>Error handling </li>
+      </p>
       <p>
         <a class="btn btn-primary btn-lg" href="https://github.com/GeorgeGuja/DisposableCalendar" target="_blank" role="button">Check it out at Github</a>
       </p>

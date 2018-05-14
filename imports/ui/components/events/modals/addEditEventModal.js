@@ -40,6 +40,7 @@ Template.addEditEventModal.events({
     event.preventDefault();
 
     let closeModal = () => {
+      $('#add-edit-event-modal').find('form')[0].reset();
       $('#add-edit-event-modal').modal('hide');
       $('.modal-backdrop').fadeOut();
     };
