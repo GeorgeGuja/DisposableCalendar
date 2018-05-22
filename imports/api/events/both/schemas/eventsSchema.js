@@ -22,7 +22,6 @@ let EventsSchema = new SimpleSchema({
     type: Number,
     label: 'The number of guests expected at this event.',
     min: 1
-    
   },
   'calendarId': {
     type: String,
